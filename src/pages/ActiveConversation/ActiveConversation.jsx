@@ -5,6 +5,9 @@ import MessageBox from '../../components/MessageBox/MessageBox'
 import './ActiveConversation.css'
 import { Button, Text, TextField } from '@radix-ui/themes'
 
+// Access the session key from the environment variable
+const sessionKey = import.meta.env.VITE_SESSION_KEY;
+
 const ActiveConversation = () => {
   const [conversation, setConversation] = useState({ messages: [] })
   const [interlocutor, setInterlocutor] = useState({})
@@ -12,7 +15,7 @@ const ActiveConversation = () => {
   const [text, setText] = useState('')
   const { conversationId } = useParams()
 
-  const token = sessionStorage.getItem('stanfordkey1885');
+  const token = sessionStorage.getItem(sessionKey);
   if (!token) {
     throw new Error("Authentication token not found");
   }
